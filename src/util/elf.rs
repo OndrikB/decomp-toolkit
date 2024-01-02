@@ -48,6 +48,7 @@ where P: AsRef<Path> {
     let obj_file = object::read::File::parse(file.as_slice())?;
     let architecture = match obj_file.architecture() {
         Architecture::PowerPc => ObjArchitecture::PowerPc,
+        Architecture::Mips => ObjArchitecture::Mips,
         arch => bail!("Unexpected architecture: {arch:?}"),
     };
     ensure!(obj_file.endianness() == Endianness::Big, "Expected big endian");

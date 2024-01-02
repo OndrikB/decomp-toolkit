@@ -119,6 +119,7 @@ fn load_obj(buf: &[u8]) -> Result<File> {
     let obj = File::parse(buf)?;
     match obj.architecture() {
         Architecture::PowerPc => {}
+        Architecture::Mips => {}
         arch => bail!("Unexpected architecture: {arch:?}"),
     };
     ensure!(obj.endianness() == Endianness::Big, "Expected big endian");
